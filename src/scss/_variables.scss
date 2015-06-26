@@ -1,0 +1,47 @@
+//Green Scheme (4 being the darkest, 1 being the lightest)
+$grn4: rgb(0, 127, 96); $grn3: rgb(0, 178, 134); $grn2: rgb(0, 204, 153); $grn1: rgb(76, 255, 210);
+$grngry4: rgb(38, 39, 40); $grngry3: rgb(52, 61, 65); $grngry2: rgb(105, 112, 116); $grngry1: rgb(181, 189, 193);
+
+//Blue Scheme (5 being the darkest, 1 being the lightest)
+$blu4: rgb(16, 90, 127); $blu3: rgb(49, 151, 202); $blu2: rgb(75, 184, 239); $blu1: rgb(122, 211, 255);
+$blugry5: rgb(48, 61, 79); $blugry4: rgb(99, 110, 127); $blugry3: rgb(190, 195, 204); $blugry2: rgb(222, 225, 229); $blugry1: rgb(244, 245, 247);
+
+//Font
+$baseFS: 1.313em; //16pt
+$smallFS: 57%;
+$smallmedFS: 87.5%; //14pt
+$medFS: 93.75%; //15py
+$largeFS: 150%;
+$letterSpacing: 120%;
+
+//Font Weights
+$bold: 700;
+$reg: 400;
+$light: 300;
+
+//Grid Vars
+$expandedWidth: 1350px;
+$gridWidth: 1175px;
+$gutterWidth: 2.13%;
+
+//Fluid Vars
+$fg-column: 60px;
+$fg-gutter: 25px;
+$fg-max-columns: 12;
+
+
+//Form (Switch, Radio)
+$action-color: $grn3 !default;
+$base-background-color: white !default;
+$switch-width: 50px;
+$switch-padding: 1px;
+$switch-height: 25px;
+$switch-radius: $switch-height;
+$knob-size: $switch-height - ($switch-padding * 2);
+$knob-radius: $switch-height - ($switch-padding * 2);
+$knob-width: $knob-size;
+$switch-background: $base-background-color;
+$switch-border-background: $blugry2;
+
+$checkbox-size: $knob-width;
+$radio-size: $switch-height;

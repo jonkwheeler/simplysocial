@@ -1,0 +1,1046 @@
+@charset "UTF-8";
+html {
+  box-sizing: border-box;
+}
+
+*, *::after, *::before {
+  box-sizing: inherit;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* ..............
+...MAIN STYLES...
+.................
+*/
+body {
+  background-color: #fff;
+  color: #70767f;
+  font-weight: 400;
+  font-size: 1.313em;
+  letter-spacing: .25px;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body, input, button {
+  font-family: 'Open Sans', 'Arial', sans-serif;
+}
+
+*:link,
+*:hover {
+  text-decoration: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+header, section, footer {
+  width: 100%;
+}
+
+.container {
+  max-width: 1175px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.page {
+  padding-top: 60px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #bec3cc;
+  margin: 5px 0 0 8px;
+}
+
+.dimthelights, .backdrop {
+  position: fixed;
+  padding: 0;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 800;
+  cursor: auto;
+}
+
+.dimthelights {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.js--hide {
+  display: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  animation: fadeIn 0.5s ease;
+}
+
+/* ..................................
+....... HEADER
+.....................................
+*/
+header {
+  background-color: #262728;
+  position: fixed;
+  top: 0;
+}
+header .container {
+  max-width: 1350px;
+  height: 60px;
+  padding: 14px 25px;
+}
+header h1 {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px);
+  height: 1px;
+  width: 1px;
+}
+header .home {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 23.11558%;
+  margin-top: 4px;
+  cursor: pointer;
+}
+header .home:last-child {
+  margin-right: 0;
+}
+header .home img {
+  width: 138px;
+  height: auto;
+}
+header .home .home-button {
+  height: 30px;
+  width: auto;
+  display: none;
+}
+header nav.header-nav {
+  display: block;
+  width: 325px;
+  float: right;
+}
+header nav.header-nav .avatar, header nav.header-nav .search, header nav.header-nav .new-message {
+  height: 30px;
+}
+header nav.header-nav .avatar {
+  float: right;
+  position: relative;
+  width: 45px;
+  margin-left: 23px;
+  cursor: pointer;
+}
+header nav.header-nav .avatar img {
+  border-radius: 4px;
+  width: 30px;
+}
+header nav.header-nav .avatar .arrow {
+  border-top-color: #4b4f54;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 15px 0px;
+}
+header nav.header-nav .avatar span {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+}
+header nav.header-nav .search {
+  overflow: hidden;
+}
+header nav.header-nav .search input {
+  height: 30px;
+  width: 100%;
+  background: none;
+  border: solid 1px #44474b;
+  border-radius: 4px;
+  padding: 0 30px 0 6px;
+  color: white;
+  font-size: 70%;
+  background: url("../img/search.svg") right 8px center no-repeat;
+}
+header nav.header-nav .new-message {
+  float: left;
+  margin-right: 23px;
+}
+header nav.header-nav .new-message span {
+  cursor: pointer;
+  background: url("../img/new-message.svg") center no-repeat;
+  display: block;
+  width: 35px;
+  height: 30px;
+}
+header nav.header-nav .messagebox {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+  position: fixed;
+  top: 33%;
+  left: 0;
+  background-color: rgba(0, 178, 134, 0.7);
+  border-radius: 4px;
+  padding: 20px;
+  background-color: #dde0e5;
+  z-index: 900;
+  cursor: auto;
+}
+header nav.header-nav .messagebox:last-child {
+  margin-right: 0;
+}
+header nav.header-nav .messagebox h3 {
+  color: #75767a;
+}
+header nav.header-nav .messagebox textarea {
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  height: 88px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 115%;
+  resize: none;
+}
+header nav.header-nav .messagebox button {
+  background: none;
+  border: none;
+  color: #a5a8ad;
+  font-size: 70%;
+  font-weight: 300;
+  margin: 10px;
+}
+header nav.header-nav .messagebox button.add-photo {
+  margin-left: 0;
+}
+header nav.header-nav .messagebox button.add-photo::before {
+  content: url(../img/add-photo.svg);
+  margin-right: 10px;
+}
+header nav.header-nav .messagebox button.add-video::before {
+  content: url(../img/add-video.svg);
+  margin-right: 10px;
+}
+header nav.header-nav .messagebox button.submit {
+  background-color: #00b286;
+  padding: 10px 20px;
+  border-radius: 4px;
+  float: right;
+  margin: 0;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+header nav.header-nav .modal-close {
+  width: 30px;
+  height: 30px;
+  background: url("../img/modal-close.svg") center no-repeat;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  z-index: 900;
+  cursor: pointer;
+}
+header nav.header-nav .dropdown {
+  position: absolute;
+  background: white;
+  font-size: 65%;
+  border-radius: 4px;
+  padding: 8px 0;
+  margin: 0;
+  top: 40px;
+  right: -8px;
+  box-shadow: 0 0 10px #303d4f;
+  z-index: 1000;
+}
+header nav.header-nav .dropdown ul:first-child {
+  border-top: 1px solid #dee1e5;
+}
+header nav.header-nav .dropdown a:link,
+header nav.header-nav .dropdown a:active,
+header nav.header-nav .dropdown a:visited {
+  color: #636e7f;
+  display: block;
+  padding: 10px 20px;
+  border-bottom: 1px solid #dee1e5;
+}
+header nav.header-nav .dropdown a:hover {
+  background-color: #dee1e5;
+}
+header nav.header-nav .dropdown a.disabled {
+  color: #bec3cc;
+}
+header nav.header-nav .dropdown:after {
+  bottom: 100%;
+  border: solid transparent;
+  content: " ";
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #FFFFFF;
+  border-width: 5px;
+  right: 8px;
+}
+
+/* ..................................
+....... HERO SECTION
+.....................................
+*/
+section.hero {
+  background-image: -webkit-linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/free-tropical-beach-wallpaper-min-blur.jpg");
+  background-image: linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/free-tropical-beach-wallpaper-min-blur.jpg");
+  background-size: cover;
+  background-position: center;
+}
+section.hero .postbox {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+  background-color: rgba(0, 178, 134, 0.7);
+  border-radius: 4px;
+  padding: 40px;
+  margin-top: 120px;
+  margin-bottom: 90px;
+}
+section.hero .postbox:last-child {
+  margin-right: 0;
+}
+section.hero .postbox input.message {
+  width: 100%;
+  margin-bottom: 20px;
+  background: none;
+  color: white;
+  font-size: 150%;
+  font-weight: 300;
+  border: none;
+}
+section.hero .postbox button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 70%;
+  font-weight: 300;
+  margin: 10px;
+}
+section.hero .postbox button.add-photo {
+  margin-left: 0;
+}
+section.hero .postbox button.add-photo::before {
+  content: url(../img/add-photo.svg);
+  margin-right: 10px;
+}
+section.hero .postbox button.add-video::before {
+  content: url(../img/add-video.svg);
+  margin-right: 10px;
+}
+section.hero nav.sub-nav {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+}
+section.hero nav.sub-nav:last-child {
+  margin-right: 0;
+}
+section.hero nav.sub-nav ul {
+  width: 85%;
+  text-align: left;
+  float: left;
+}
+section.hero nav.sub-nav li {
+  display: inline-block;
+  margin-left: 30px;
+}
+section.hero nav.sub-nav li:first-child {
+  margin-left: 0;
+}
+section.hero nav.sub-nav li a:link,
+section.hero nav.sub-nav li a:visited {
+  color: #bec3cc;
+  text-transform: uppercase;
+  font-size: 57%;
+  font-weight: 700;
+  letter-spacing: 1px;
+  border-bottom: solid 4px transparent;
+  transition: border-bottom 0.2s, color 0.2s;
+  height: 48px;
+  display: block;
+  padding: 15px;
+}
+section.hero nav.sub-nav li a:hover,
+section.hero nav.sub-nav li a:active,
+section.hero nav.sub-nav li a.active {
+  color: white;
+  border-bottom: solid 4px #00cc99;
+}
+section.hero nav.sub-nav ul.view-icons {
+  width: 15%;
+  float: right;
+}
+section.hero nav.sub-nav ul.view-icons li {
+  margin-left: 0px;
+  float: right;
+}
+section.hero nav.sub-nav ul.view-icons li a.list-view {
+  background: url("../img/list-view.svg") center no-repeat;
+  background-size: 10px 9px;
+}
+section.hero nav.sub-nav ul.view-icons li a.tile-view {
+  background: url("../img/tile-view.svg") center no-repeat;
+  background-size: 10px 9px;
+}
+
+/* ..................................
+....... POSTS SECTION
+.....................................
+*/
+section.posts {
+  padding: 50px 0;
+}
+section.posts .post {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+  border: solid 1px #dee1e5;
+  border-radius: 4px;
+  padding: 25px;
+  margin-bottom: 50px;
+}
+section.posts .post:last-child {
+  margin-right: 0;
+}
+section.posts .post:last-child {
+  margin-bottom: 0;
+}
+section.posts .post .user-img {
+  width: 40px;
+  height: 100%;
+  float: left;
+}
+section.posts .post .user-img img {
+  border-radius: 4px;
+  width: 40px;
+}
+section.posts .post .user-post {
+  padding-left: 65px;
+}
+section.posts .post .user-post div {
+  margin-bottom: 15px;
+}
+section.posts .post .user-post div:last-child {
+  margin-bottom: 0;
+}
+section.posts .post .user-post .user-name {
+  width: 60%;
+  float: left;
+  font-size: 85%;
+  color: #4c5159;
+  line-height: 120%;
+}
+section.posts .post .user-post .post-info {
+  width: 40%;
+  float: right;
+  font-size: 70%;
+  text-align: right;
+  color: #bec3cc;
+  line-height: normal;
+}
+section.posts .post .user-post .message {
+  clear: both;
+  font-size: 75%;
+  line-height: 25px;
+  color: #70767f;
+}
+section.posts .post .user-post .message a {
+  color: #cbcfd6;
+}
+section.posts .post .user-post .extra {
+  color: #bec3cc;
+  font-size: 60%;
+  display: -webkit-box;
+}
+section.posts .post .user-post .extra span, section.posts .post .user-post .extra .arrow {
+  display: inline-block;
+}
+section.posts hr {
+  display: block;
+  height: 50px;
+  width: 100%;
+  margin: 0;
+  border: 0;
+}
+
+section.posts.tile-view-active {
+  -moz-column-count: 3;
+  -moz-column-gap: 25px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 25px;
+  column-count: 3;
+  column-gap: 25px;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+section.posts.tile-view-active .post {
+  display: inline-block;
+  width: 100%;
+  float: none;
+  margin: 0;
+  margin-bottom: 25px;
+}
+section.posts.tile-view-active hr {
+  display: none;
+}
+
+/* ..................................
+....... FOOTER
+.....................................
+*/
+footer {
+  border-top: 1px solid #dee1e5;
+  clear: both;
+}
+footer nav.footer-nav {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 100%;
+}
+footer nav.footer-nav:last-child {
+  margin-right: 0;
+}
+footer nav.footer-nav ul {
+  padding: 30px;
+  text-align: center;
+}
+footer nav.footer-nav li {
+  display: inline-block;
+  margin-left: 25px;
+  text-transform: uppercase;
+  font-size: 57%;
+  font-weight: 400;
+}
+footer nav.footer-nav li:first-child {
+  margin-left: 0;
+}
+footer nav.footer-nav li a:link,
+footer nav.footer-nav li a:visited {
+  color: #00b286;
+}
+footer nav.footer-nav li a:hover,
+footer nav.footer-nav li a:active {
+  color: #007f60;
+}
+
+/* ..................................
+....... PROFILE
+.....................................
+*/
+.profile section.hero {
+  background-image: -webkit-linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/bojacks-house-blur-min.jpg");
+  background-image: linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/bojacks-house-blur-min.jpg");
+}
+.profile section.hero .profile-info {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+  margin-top: 85px;
+  margin-bottom: 85px;
+}
+.profile section.hero .profile-info:last-child {
+  margin-right: 0;
+}
+.profile section.hero .profile-info * {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 15px;
+  color: white;
+  font-weight: 300;
+}
+.profile section.hero .profile-info img {
+  width: 85px;
+  height: auto;
+  border-radius: 4px;
+}
+.profile section.hero .profile-info h1 {
+  font-size: 150%;
+  font-weight: 400;
+  margin-top: 25px;
+  margin-bottom: 20px;
+  line-height: 120%;
+}
+.profile section.hero .profile-info h3 {
+  font-size: 75%;
+  line-height: 140%;
+}
+.profile section.hero .profile-info a:link,
+.profile section.hero .profile-info a:visited {
+  color: #545756;
+}
+.profile section.hero .profile-info a:hover,
+.profile section.hero .profile-info a:active {
+  color: #b5bdc1;
+}
+
+/* ..................................
+....... SETTINGS
+.....................................
+*/
+.settings section {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: #dee1e5 solid 1px;
+}
+.settings section:last-child {
+  margin-right: 0;
+}
+.settings section h3 {
+  text-transform: uppercase;
+  font-size: 57%;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin-bottom: 25px;
+}
+.settings section .switch-option {
+  padding: 10px 0;
+}
+.settings section .switch-option .label-switch {
+  float: left;
+}
+.settings section .switch-option label:not(:first-child) {
+  float: left;
+  display: block;
+  padding-left: 30px;
+  font-size: 75%;
+  cursor: pointer;
+  line-height: normal;
+}
+.settings section.account .profile-img {
+  width: 85px;
+  display: block;
+  cursor: pointer;
+  float: left;
+  margin-right: 50px;
+}
+.settings section.account .profile-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+.settings section.account .profile-img button {
+  width: 100%;
+  background-color: white;
+  border: 1px solid #bec3cc;
+  border-radius: 4px;
+  font-size: 57%;
+  margin-top: 5px;
+  color: #bec3cc;
+}
+.settings section.account .profile-form {
+  float: left;
+  display: block;
+  width: 70%;
+}
+.settings section.account .profile-form input {
+  width: 80%;
+  height: 40px;
+  margin-bottom: 18px;
+  background: none;
+  border: solid 1px #bec3cc;
+  border-radius: 4px;
+  padding: 0 10px 0 36px;
+  color: #343d41;
+  font-size: 70%;
+  background: left 8px center no-repeat;
+}
+.settings section.account .profile-form input:focus {
+  color: #00b286;
+  border-color: #00b286;
+  transition: all 0.3s ease;
+}
+.settings section.account .profile-form input[type="text"] {
+  background-image: url("../img/user-icon.svg");
+}
+.settings section.account .profile-form input[type="email"] {
+  background-image: url("../img/mail-icon.svg");
+}
+.settings section.account .profile-form input[type="password"] {
+  background-image: url("../img/lock-icon.svg");
+}
+.settings section.privacy label {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 55px;
+  margin-right: 15px;
+  font-size: 75%;
+  margin: 10px 0;
+  z-index: 0;
+}
+.settings section.privacy input[type=radio], .settings section.privacy input[type=checkbox] {
+  display: none;
+}
+.settings section.privacy label:before {
+  content: "";
+  display: inline-block;
+  width: 23px;
+  height: 23px;
+  position: absolute;
+  left: 0;
+  background-color: #FFF;
+  border-radius: 50%;
+  border: 1px solid #bec3cc;
+}
+.settings section.privacy input[type=radio]:checked + label:before, .settings section.privacy input[type=checkbox]:checked + label:before {
+  content: "\25CF";
+  color: #00b286;
+  font-size: 32px;
+  text-align: center;
+  line-height: 15px;
+}
+.settings section.privacy .checkbox-option {
+  padding: 7px 0;
+}
+.settings section.save {
+  padding-bottom: 135px;
+  border-bottom: none;
+}
+.settings section.save button {
+  padding: 13px 30px;
+  border: none;
+  color: white;
+  background: #00b286;
+  font-size: 65%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.settings h1 {
+  float: left;
+  display: block;
+  margin-right: 2.51256%;
+  width: 48.74372%;
+  margin-left: 25.62814%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  border-bottom: #dee1e5 solid 1px;
+  border-bottom: none;
+  color: #3f454d;
+  font-size: 150%;
+}
+.settings h1:last-child {
+  margin-right: 0;
+}
+
+/* ..................................
+....... SWITCH
+.....................................
+*/
+.label-switch {
+  border-radius: 25px;
+  cursor: pointer;
+  display: inline-block;
+  height: 25px;
+  position: relative;
+  width: 50px;
+}
+.label-switch input[type="checkbox"] {
+  display: none;
+}
+.label-switch input[type="checkbox"] + .checkbox {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #dee1e5;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  height: 25px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 50px;
+  z-index: -1;
+}
+.label-switch input[type="checkbox"] + .checkbox:before {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  left: 1px;
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  background: #dee1e5;
+  border-radius: 25px;
+  content: "";
+  height: 23px;
+  width: 48px;
+  z-index: 0;
+}
+.label-switch input[type="checkbox"] + .checkbox:after {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  bottom: 0;
+  left: 1px;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  height: 23px;
+  width: 23px;
+  background: white;
+  border-radius: 23px;
+  content: "";
+  z-index: 1;
+}
+.label-switch input[type="checkbox"]:checked + .checkbox {
+  background: #00b286;
+}
+.label-switch input[type="checkbox"]:checked + .checkbox:before {
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+.label-switch input[type="checkbox"]:checked + .checkbox:after {
+  left: 26px;
+}
+
+/* Big tablet to 1200px: (widths smaller than the 1140px row) */
+/* Small tablet to big tablet: from 768 to 1023px */
+@media screen and (max-width: 1023px) {
+  section.hero .postbox, header nav.header-nav .messagebox, section.hero nav.sub-nav, section.posts .post, .settings section, .settings h1 {
+    float: left;
+    display: block;
+    margin-right: 2.51256%;
+    width: 65.82915%;
+    margin-left: 17.08543%;
+  }
+  section.hero .postbox:last-child, header nav.header-nav .messagebox:last-child, section.hero nav.sub-nav:last-child, section.posts .post:last-child, .settings section:last-child, .settings h1:last-child {
+    margin-right: 0;
+  }
+
+  section.posts.tile-view-active {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+/* Small phones to small tablets: from 481 to 767px */
+@media screen and (max-width: 767px) {
+  header .home {
+    margin-right: 23px;
+    margin-top: 0;
+    height: 30px;
+    width: 30px;
+  }
+  header .home .logo {
+    display: none;
+  }
+  header .home .home-button {
+    display: block;
+  }
+
+  header nav.header-nav {
+    float: none;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  header nav.header-nav .messagebox, section.hero .postbox, section.hero nav.sub-nav, section.posts .post, .settings section, .settings h1 {
+    float: left;
+    display: block;
+    margin-right: 2.51256%;
+    width: 82.91457%;
+    margin-left: 8.54271%;
+  }
+  header nav.header-nav .messagebox:last-child, section.hero .postbox:last-child, section.hero nav.sub-nav:last-child, section.posts .post:last-child, .settings section:last-child, .settings h1:last-child {
+    margin-right: 0;
+  }
+
+  section.hero nav.sub-nav li {
+    display: block;
+    padding: 8px;
+    margin-left: 0;
+  }
+  section.hero nav.sub-nav li a:link,
+  section.hero nav.sub-nav li a:visited {
+    border-bottom: none;
+  }
+  section.hero nav.sub-nav li a:hover,
+  section.hero nav.sub-nav li a:active,
+  section.hero nav.sub-nav li a.active {
+    color: white;
+    border-bottom: none;
+  }
+
+  footer nav.footer-nav li {
+    display: block;
+    padding: 15px;
+    margin-left: 0;
+  }
+
+  section.posts.tile-view-active {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+  section.posts.tile-view-active .post {
+    margin-bottom: 50px;
+  }
+}
+/* Small phones: from 0 to 480px */
+@media screen and (max-width: 480px) {
+  header nav.header-nav .messagebox, section.hero .postbox, section.hero nav.sub-nav, section.posts .post, .settings section, .settings h1 {
+    max-width: 1175px;
+    margin-left: auto;
+    margin-right: auto;
+    float: left;
+    display: block;
+    margin-right: 2.51256%;
+    width: 100%;
+  }
+  header nav.header-nav .messagebox::after, section.hero .postbox::after, section.hero nav.sub-nav::after, section.posts .post::after, .settings section::after, .settings h1::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+  header nav.header-nav .messagebox:last-child, section.hero .postbox:last-child, section.hero nav.sub-nav:last-child, section.posts .post:last-child, .settings section:last-child, .settings h1:last-child {
+    margin-right: 0;
+  }
+
+  section.hero, section.posts, .settings section, .settings h1 {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  header nav.header-nav .modal-close {
+    right: 10px;
+    top: -40px;
+  }
+
+  section.hero nav.sub-nav li, header nav.header-nav .search, header nav.header-nav .arrow {
+    margin-left: 5px;
+  }
+
+  header .home,
+  header nav.header-nav .new-message {
+    margin-right: 10px;
+  }
+
+  header nav.header-nav .avatar {
+    margin-left: 10px;
+  }
+
+  section.hero .postbox input.message {
+    font-size: 120%;
+  }
+
+  section.hero .postbox button.add-photo, section.hero .postbox button.add-video {
+    display: block;
+    margin: 10px auto 25px auto;
+  }
+
+  section.hero .postbox {
+    padding-bottom: 0;
+  }
+
+  .settings section.account .profile-form {
+    margin-top: 15px;
+    width: 100%;
+  }
+
+  .settings section .switch-option label:not(:first-child) {
+    width: 100%;
+    margin-top: 5px;
+    padding-left: 0;
+  }
+}

@@ -1,0 +1,823 @@
+@import "../../bourbon/bourbon";
+@import "../../neat/neat";
+@import "_reset.scss";
+@import "_grid_settings.scss";
+@import "_variables.scss";
+
+/* ..............
+...MAIN STYLES...
+.................
+*/
+
+body {
+  background-color: #fff;
+  color: #70767f;
+  font-weight: $reg;
+  font-size: $baseFS;
+  letter-spacing: .25px;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body, input, button {
+  font-family: 'Open Sans', 'Arial', sans-serif;
+}
+
+*:link,
+*:hover {
+  text-decoration: none;
+}
+
+*:focus {
+  outline: none;
+}
+
+header, section, footer {width: 100%;}
+
+.container {
+  @include outer-container;
+}
+
+.page {padding-top: 60px;}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid $blugry3;
+  margin: 5px 0 0 8px;
+}
+
+.dimthelights, .backdrop {
+  position:fixed;
+  padding:0;
+  margin:0;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  z-index: 800;
+  cursor: auto;
+}
+
+.dimthelights {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.js--hide {
+  display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease;
+}
+
+/* ..................................
+....... HEADER
+.....................................
+*/
+
+header {
+  background-color: $grngry4;
+  position: fixed;
+  top: 0;
+  .container {
+    max-width: $max-expanded-width;
+    height: 60px;
+    padding: 14px 25px;
+  }
+
+  h1 {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px);
+    height: 1px;
+    width: 1px;
+  }
+
+  .home {
+    @include span-columns(3);
+    margin-top: 4px;
+    cursor: pointer;
+    img {
+      width: 138px;
+      height: auto;
+    }
+    .home-button{
+      height: 30px;
+      width:auto;
+      display: none;
+    }
+  }
+
+  nav.header-nav {
+    display: block;
+    width: 325px;
+    float: right;
+    .avatar, .search, .new-message {
+      height: 30px;
+    }
+
+    .avatar {
+      float: right;
+      position: relative;
+      width:45px;
+      margin-left: 23px;
+      cursor: pointer;
+      img {
+        border-radius: 4px;
+        width: 30px;
+      }
+      .arrow {
+        border-top-color: rgb(75, 79, 84);
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 15px 0px;
+      }
+      span{
+        width: 30px;
+        height: 30px;
+        position: absolute;
+      }
+    }
+
+    .search {
+      overflow:hidden;
+      input {
+        height: 30px;
+        width: 100%;
+        background: none;
+        border: solid 1px rgb(68, 71, 75);
+        border-radius: 4px;
+        padding: 0 30px 0 6px;
+        color: white;
+        font-size: 70%;
+        background: url("../img/search.svg") right 8px center no-repeat;
+      }
+    }
+
+    .new-message {
+      float: left;
+      margin-right: 23px;
+      span {
+        cursor: pointer;
+        background: url("../img/new-message.svg") center no-repeat;
+        display: block;
+        width: 35px;
+        height: 30px;}
+      }
+
+    .messagebox  {
+      @include span-columns(6);
+      @include shift(3 of 12);
+      position:fixed;
+      top: 33%;
+      left:0;
+      background-color: rgba(0, 178, 134, 0.7);
+      border-radius: 4px;
+      padding: 20px;
+      background-color: rgb(221, 224, 229);
+      z-index: 900;
+      cursor: auto;
+
+      h3 {
+        color: #75767a;
+      }
+
+      textarea {
+        display: block;
+        width: 100%;
+        margin: 20px 0;
+        height: 88px;
+        border: none;
+        border-radius: 4px;
+        padding: 10px;
+        font-size: 115%;
+        resize: none;
+      }
+
+      button {
+        background: none;
+        border: none;
+        color: #a5a8ad;
+        font-size: 70%;
+        font-weight: $light;
+        margin: 10px;
+        &.add-photo { margin-left: 0; }
+      }
+      button.add-photo::before { content: url(../img/add-photo.svg); margin-right: 10px; }
+      button.add-video::before { content: url(../img/add-video.svg); margin-right: 10px; }
+
+      button.submit {
+        background-color: $grn3;
+        padding: 10px 20px;
+        border-radius: 4px;
+        float: right;
+        margin: 0;
+        color: white;
+        font-weight: $bold;
+        cursor: pointer;
+      }
+
+    }
+
+    .modal-close {
+      width: 30px;
+      height: 30px;
+      background: url('../img/modal-close.svg') center no-repeat;
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      z-index: 900;
+      cursor: pointer;
+    }
+
+    .dropdown {
+      position: absolute;
+      background: white;
+      font-size: 65%;
+      border-radius: 4px;
+      padding: 8px 0;
+      margin: 0;
+      top: 40px;
+      right: -8px;
+      box-shadow: 0 0 10px $blugry5;
+      z-index: 1000;
+
+      ul:first-child {border-top: 1px solid $blugry2;}
+
+      a:link,
+      a:active,
+      a:visited {
+        color: $blugry4;
+        display: block;
+        padding: 10px 20px;
+        border-bottom: 1px solid $blugry2;
+      }
+
+      a:hover {
+        background-color: $blugry2;
+      }
+
+      a.disabled {color: $blugry3;}
+
+    }
+    .dropdown:after {
+      bottom: 100%;
+      border: solid transparent;
+      content: " ";
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: #FFFFFF;
+      border-width: 5px;
+      right: 8px;
+    }
+
+  }
+
+}
+
+
+/* ..................................
+....... HERO SECTION
+.....................................
+*/
+
+section.hero {
+  @include background-image(linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/free-tropical-beach-wallpaper-min-blur.jpg"));
+  background-size: cover;
+  background-position: center;
+
+  .postbox {
+    @include span-columns(6);
+    @include shift(3 of 12);
+    background-color: rgba(0, 178, 134, 0.7);
+    border-radius: 4px;
+    padding: 40px;
+    margin-top: 120px;
+    margin-bottom: 90px;
+
+    input.message {
+      width: 100%;
+      margin-bottom: 20px;
+      background: none;
+      color: white;
+      font-size: $largeFS;
+      font-weight: $light;
+      border: none;
+    }
+
+    button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 70%;
+      font-weight: $light;
+      margin: 10px;
+      &.add-photo { margin-left: 0; }
+    }
+    button.add-photo::before { content: url(../img/add-photo.svg); margin-right: 10px; }
+    button.add-video::before { content: url(../img/add-video.svg); margin-right: 10px; }
+  }
+
+  nav.sub-nav {
+    @include span-columns(6);
+    @include shift(3 of 12);
+
+    ul {
+        width: 85%;
+        text-align: left;
+        float: left;
+      }
+
+    li {
+      display: inline-block;
+      margin-left: 30px;
+      &:first-child { margin-left: 0; }
+
+      a:link,
+      a:visited {
+        color: $blugry3;
+        text-transform: uppercase;
+        font-size: $smallFS;
+        font-weight: $bold;
+        letter-spacing: 1px;
+        border-bottom: solid 4px transparent;
+        transition: border-bottom 0.2s, color 0.2s;
+        height: 48px;
+        display: block;
+        padding: 15px;
+      }
+
+      a:hover,
+      a:active,
+      a.active {
+        color: white;
+        border-bottom: solid 4px $grn2;
+      }
+    }
+
+    ul.view-icons {
+      width: 15%;
+      float: right;
+      li {
+        margin-left: 0px;
+        float: right;
+        a.list-view {
+          background: url("../img/list-view.svg") center no-repeat;
+          background-size: 10px 9px;
+        }
+        a.tile-view {
+          background: url("../img/tile-view.svg") center no-repeat;
+          background-size: 10px 9px;
+        }
+      }
+    }
+  }
+
+}
+
+
+/* ..................................
+....... POSTS SECTION
+.....................................
+*/
+
+section.posts {
+  padding: 50px 0;
+
+  .post {
+    @include span-columns(6);
+    @include shift(3 of 12);
+    border: solid 1px $blugry2;
+    border-radius: 4px;
+    padding: 25px;
+    margin-bottom: 50px;
+    &:last-child {margin-bottom: 0;}
+
+
+    .user-img {
+      width:40px;
+      height: 100%;
+      float: left;
+      img {border-radius: 4px;width: 40px;}
+    }
+
+    .user-post {
+      padding-left: 65px;
+      div {margin-bottom: 15px;}
+      div:last-child {margin-bottom: 0;}
+
+      .user-name {
+        width:60%;
+        float: left;
+        font-size: 85%;
+        color: rgb(76, 81, 89);
+        line-height: 120%;
+      }
+
+      .post-info {width: 40%; float: right;
+        font-size: 70%;
+        text-align: right;
+        color: $blugry3;
+        line-height: normal;
+      }
+
+      .message {
+        clear: both;
+        font-size: 75%;
+        line-height: 25px;
+        color: rgb(112, 118, 127);
+
+        a {color: rgb(203, 207, 214)}
+      }
+
+      .extra {
+        color: $blugry3;
+        font-size: 60%;
+        display: -webkit-box;
+        span, .arrow{display: inline-block;}
+      }
+
+    }
+
+  }
+
+  hr {
+    display: block;
+    height: 50px;
+    width: 100%;
+    margin: 0;
+    border: 0;
+  }
+
+}
+
+section.posts.tile-view-active {
+
+  -moz-column-count: 3;
+  -moz-column-gap: 25px;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 25px;
+  column-count: 3;
+  column-gap: 25px;
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+
+  .post {
+    display: inline-block;
+    width: 100%;
+    float: none;
+    margin: 0;
+    margin-bottom: 25px;
+  }
+
+  hr {display: none;}
+
+}
+
+
+/* ..................................
+....... FOOTER
+.....................................
+*/
+footer {
+
+  border-top: 1px solid $blugry2;
+  clear: both;
+
+  nav.footer-nav {
+    @include span-columns(12);
+
+    ul {
+      padding: 30px;
+      text-align: center;
+    }
+
+    li {
+      display: inline-block;
+      margin-left: 25px;
+      text-transform: uppercase;
+      font-size: $smallFS;
+      font-weight: $reg;
+      &:first-child {margin-left: 0;}
+
+      a:link,
+      a:visited {
+        color: $grn3;
+      }
+
+      a:hover,
+      a:active {
+        color: $grn4;
+      }
+    }
+  }
+}
+
+/* ..................................
+....... PROFILE
+.....................................
+*/
+
+
+.profile {
+
+  section.hero {
+    @include background-image(linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/bojacks-house-blur-min.jpg"));
+
+    .profile-info {
+      @include span-columns(6);
+      @include shift(3 of 12);
+      margin-top: 85px;
+      margin-bottom: 85px;
+
+      * {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        margin-bottom: 15px;
+        color: white;
+        font-weight: $light;
+      }
+
+      img {
+        width: 85px;
+        height: auto;
+        border-radius: 4px;
+      }
+
+      h1 {
+        font-size: 150%;
+        font-weight: $reg;
+        margin-top: 25px;
+        margin-bottom: 20px;
+        line-height: 120%;
+      }
+      h3 {
+        font-size: 75%;
+        line-height: 140%;
+      }
+
+      a:link,
+      a:visited {
+        color: #545756;
+      }
+      a:hover,
+      a:active {
+        color: $grngry1;
+      }
+    }
+  }
+
+}
+
+
+
+/* ..................................
+....... SETTINGS
+.....................................
+*/
+
+
+.settings {
+
+
+
+    section {
+      @include span-columns(6);
+      @include shift(3 of 12);
+      padding-top: 50px;
+      padding-bottom: 50px;
+      border-bottom: $blugry2 solid 1px;
+
+      h3 {
+        text-transform: uppercase;
+        font-size: $smallFS;
+        font-weight: $bold;
+        letter-spacing: 0.5px;
+        margin-bottom: 25px;
+      }
+
+      .switch-option {
+        padding: 10px 0;
+
+        .label-switch {
+          float: left;
+        }
+        label:not(:first-child) {
+          float: left;
+          display: block;
+          padding-left: 30px;
+          font-size: 75%;
+          cursor: pointer;
+          line-height: normal;
+        }
+      }
+
+      &.account {
+        .profile-img{
+          width: 85px;
+          display: block;
+          cursor:pointer;
+          float: left;
+          margin-right: 50px;
+
+          img {
+            width:100%;
+            height: auto;
+            border-radius: 4px;
+          }
+          button {
+            width: 100%;
+            background-color: white;
+            border: 1px solid $blugry3;
+            border-radius: 4px;
+            font-size: 57%;
+            margin-top: 5px;
+            color:$blugry3;
+          }
+        }
+        .profile-form {
+          float: left;
+          display: block;
+          width: 70%;
+
+          input {
+            width:80%;
+            height: 40px;
+            margin-bottom: 18px;
+            background: none;
+            border: solid 1px $blugry3;
+            border-radius: 4px;
+            padding: 0 10px 0 36px;
+            color: $grngry3;
+            font-size: 70%;
+            background: left 8px center no-repeat;
+          }
+          input:focus {
+            color: $grn3;
+            border-color: $grn3;
+            transition: all 0.3s ease;
+          }
+
+          input[type="text"]{
+            background-image: url("../img/user-icon.svg");
+          }
+          input[type="email"]{
+            background-image: url("../img/mail-icon.svg");
+          }
+          input[type="password"]{
+            background-image: url("../img/lock-icon.svg");
+          }
+
+        }
+
+      }
+
+      &.privacy {
+        label {
+          display: inline-block;
+          cursor: pointer;
+          position: relative;
+          padding-left: 55px;
+          margin-right: 15px;
+          font-size: 75%;
+          margin: 10px 0;
+          z-index: 0;
+        }
+        input[type=radio], input[type=checkbox] {
+          display: none;
+        }
+        label:before {
+          content: "";
+          display: inline-block;
+          width: 23px;
+          height: 23px;
+          position: absolute;
+          left: 0;
+          background-color: #FFF;
+          border-radius: 50%;
+          border: 1px solid $blugry3;
+        }
+        input[type=radio]:checked + label:before, input[type=checkbox]:checked + label:before {
+          content: "\25CF";
+          color: $grn3;
+          font-size: 32px;
+          text-align: center;
+          line-height: 15px;
+        }
+        .checkbox-option {
+          padding: 7px 0;
+        }
+      }
+
+      &.save {
+        padding-bottom: 135px;
+        border-bottom: none;
+
+        button {
+          padding: 13px 30px;
+          border: none;
+          color: white;
+          background: $grn3;
+          font-size: 65%;
+          cursor: pointer;
+          border-radius: 4px;
+        }
+      }
+
+    }
+
+    h1 {
+      @include span-columns(6);
+      @include shift(3 of 12);
+      padding-top: 50px;
+      padding-bottom: 50px;
+      border-bottom: $blugry2 solid 1px;
+      border-bottom: none;
+      color: #3f454d;
+      font-size: $largeFS;
+    }
+
+}
+
+/* ..................................
+....... SWITCH
+.....................................
+*/
+
+.label-switch {
+
+  border-radius: $switch-radius;
+  cursor: pointer;
+  display: inline-block;
+  height: $switch-height;
+  position: relative;
+  width: $switch-width;
+
+  input[type="checkbox"] {
+    display: none;
+
+    + .checkbox {
+      @include transition(all 0.3s ease);
+      background: $switch-border-background;
+      border-radius: $switch-radius;
+      border: none;
+      cursor: pointer;
+      height: $switch-height;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      width: $switch-width;
+      z-index: -1;
+
+      &:before {
+        @include position(absolute, 1px 0 0 1px);
+        @include transform(scale(1));
+        @include transition(all 0.3s ease);
+        background: $blugry2;
+        border-radius: $switch-radius;
+        content: "";
+        height: $knob-radius;
+        width: $switch-width - ($switch-padding * 2);
+        z-index: 0;
+      }
+
+      &:after {
+        @include position(absolute, 1px 0 0 1px);
+        @include transition(all 0.3s ease);
+        @include size($knob-size);
+        background: $switch-background;
+        border-radius: $knob-radius;
+        content: "";
+        z-index: 1;
+      }
+    }
+
+    &:checked {
+      + .checkbox {
+        background: $action-color;
+
+        &:before {
+          @include transform(scale(0));
+        }
+
+        &:after {
+          left: $switch-width - $knob-width - ($switch-padding);
+        }
+      }
+    }
+  }
+}
+
+
+@import "_queries.scss";

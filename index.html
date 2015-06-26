@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SimplySocial. The NEW Twitter backed by a Horse." />
+  <link rel="apple-touch-icon" sizes="57x57" href="src/img/favicons/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="src/img/favicons/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="src/img/favicons/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="src/img/favicons/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="src/img/favicons/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="src/img/favicons/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="src/img/favicons/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="src/img/favicons/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="src/img/favicons/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="src/img/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="src/img/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="src/img/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="src/img/favicons/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="src/img/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="src/img/favicons/manifest.json">
+  <link rel="shortcut icon" href="src/img/favicons/favicon.ico">
+  <meta name="msapplication-TileColor" content="#262728">
+  <meta name="msapplication-TileImage" content="src/img/favicons/mstile-144x144.png">
+  <meta name="msapplication-config" content="src/img/favicons/browserconfig.xml">
+  <meta name="theme-color" content="#262728">
+  <title>Simply Social v0.5</title>
+  <link rel="stylesheet" href="src/css/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.0/masonry.pkgd.min.js"></script>
+  <script src="https://fb.me/react-0.13.3.js"></script>
+  <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+</head>
+  <body>
+    <div class="SimplySocial"></div>
+
+    <script type="text/jsx">
+
+
+    var Header = React.createClass({
+
+      render: function() {
+        return (
+          <header>
+            <div className="container">
+              <h1>SimplySocial</h1>
+              <div className="home" onClick={this.props.clickFN.bind(null, 'newsfeed')}>
+                <img src="src/img/logo.png" alt="SimplySocial Logo" className="logo" />
+                <img src="src/img/home.svg" alt="Newsfeed" className="home-button" />
+              </div>
+              <nav className="header-nav">
+                <div className="new-message">
+                  <span onClick={this.props.clickFN.bind(null, 'message-modal')}></span>
+                  <div className={this.props.modal.modalClass}>
+                    <div className={this.props.modal.messageboxClass}>
+                      <div className="modal-close" onClick={this.props.clickFN.bind(null, 'message-modal')}></div>
+                      <h3>Create new message</h3>
+                      <textarea className="message"></textarea>
+                      <button className="add-photo">Add Photo</button>
+                      <button className="add-video">Add Video</button>
+                      <button className="submit">Post</button>
+                    </div>
+                  </div>
+                  <div className={this.props.modal.modalBackdropClass} onClick={this.props.clickFN.bind(null, 'message-modal')}></div>
+                </div>
+                <div className="avatar">
+                  <span onClick={this.props.clickFN.bind(null, 'dropdown')}></span>
+                  <img src="src/img/bojack.jpg" alt="" />
+                  <div className="arrow"></div>
+                  <div className={this.props.dropdown.dropdownClass}>
+                    <ul>
+                      <li><a href="#" onClick={this.props.clickFN.bind(null, 'profile')}>Profile</a></li>
+                      <li><a href="#" className="disabled">Followers</a></li>
+                      <li><a href="#" className="disabled">Following</a></li>
+                      <li><a href="#" onClick={this.props.clickFN.bind(null, 'settings')}>Settings</a></li>
+                    </ul>
+                  </div>
+                  <div className={this.props.dropdown.dropdownBackdropClass} onClick={this.props.clickFN.bind(null, 'dropdown')}></div>
+                </div>
+                <div className="search">
+                  <input type="text" />
+                </div>
+              </nav>
+            </div>
+          </header>
+        );
+      }
+
+    });
+
+    var Footer = React.createClass({
+
+      render: function() {
+        return (
+          <footer>
+            <div className="container">
+              <nav className="footer-nav">
+                <ul>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Support</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Terms</a></li>
+                  <li>&copy; 2015 SimplySocial</li>
+                </ul>
+              </nav>
+            </div>
+          </footer>
+        );
+      }
+
+    });
+
+
+
+    var Posts = React.createClass({
+      render: function() {
+        var postNodes = this.props.posts.map(function (post, i) {
+          return (
+            <div className="post" key={i}>
+              <div className="user-img">
+                <img src={post.imgSrc} alt="" />
+              </div>
+              <div className="user-post">
+                <div className="user-name">{post.author}</div>
+                <div className="post-info">{post.time}</div>
+                <div className="message">
+                  {post.text}
+                </div>
+                <div className="extra">Expand<div className="arrow"></div>
+                </div>
+              </div>
+            </div>
+          );
+        });
+
+        return (
+          <div className="custom-posts">
+            <div>
+              {postNodes}
+            </div>
+            <hr />
+          </div>
+        );
+      }
+    });
+
+    var Newsfeed = React.createClass({
+
+      render: function() {
+        return (
+          <div className={this.props.attributes.newsfeedClass}>
+            <section className="hero">
+              <div className="container">
+                <div className="postbox">
+                  <input type="text" className="message" placeholder="What's on your mind?"/>
+                  <button className="add-photo">Add Photo</button>
+                  <button className="add-video">Add Video</button>
+                </div>
+                <nav className="sub-nav">
+                  <ul>
+                    <li><a href="#" className="active">All Posts</a></li>
+                    <li><a href="#">Photos</a></li>
+                    <li><a href="#">Videos</a></li>
+                  </ul>
+                  <ul className="view-icons">
+                    <li><a href="#" className={this.props.view.tileViewClass} onClick={this.props.clickFN.bind(null, 'tile')}></a></li>
+                    <li><a href="#" className={this.props.view.listViewClass} onClick={this.props.clickFN.bind(null, 'list')}></a></li>
+                  </ul>
+                </nav>
+              </div>
+            </section>
+            <section className={this.props.view.postsViewClass}>
+              <div className="container">
+                <Posts posts={this.props.posts} />
+                <div className="post">
+                  <div className="user-img">
+                    <img src="src/img/todd.jpg" alt="" />
+                  </div>
+                  <div className="user-post">
+                    <div className="user-name">Todd Chavez</div>
+                    <div className="post-info">18 days ago</div>
+                    <div className="message">
+                      It's a mood that you drink like a smoothie. It's a #Smoodie! <a href="https://www.netflix.com/WiMovie/70300800" target="_blank">netflix.com/WiMovie/70300800</a>
+                    </div>
+                    <div className="extra">Expand<div className="arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="post">
+                  <div className="user-img">
+                    <img src="src/img/vincent.jpg" alt="" />
+                  </div>
+                  <div className="user-post">
+                    <div className="user-name">Vincent Adultman</div>
+                    <div className="post-info">21 days ago</div>
+                    <div className="message">
+                      I had a atitude problem but then I took a timeout and I thought about what I did. <a href="http://www.vincentadultman.com" target="_blank">vincentadultman.com</a>
+                    </div>
+                    <div className="extra">Expand<div className="arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="post">
+                  <div className="user-img">
+                    <img src="src/img/mrpeanutbutter.jpg" alt="" />
+                  </div>
+                  <div className="user-post">
+                    <div className="user-name">Mr. Peanutbutter</div>
+                    <div className="post-info">94 days ago</div>
+                    <div className="message">
+                      <a href="http://www.imdb.com/character/ch0496691/?ref_=tt_cl_t3" target="_blank">@diane_wins </a>
+                      Sweetie, you know I support you, whatever you want to do, but you're not gonna find what you're looking for in these awful made-up places. The universe is a cruel, uncaring void. The key to being happy isn't a search for meaning. It's to just keep yourself busy with unimportant nonsense, and eventually, you'll be dead.
+                    </div>
+                    <div className="extra">Expand<div className="arrow"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="post">
+                  <div className="user-img">
+                    <img src="src/img/bojack.jpg" alt="" />
+                  </div>
+                  <div className="user-post">
+                    <div className="user-name">Bojack Horseman</div>
+                    <div className="post-info">312 days ago</div>
+                    <div className="message">
+                      Welcome to SimplySocial. The NEW Twitter backed by a Horse.
+                    </div>
+                    <div className="extra">Expand<div className="arrow"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        );
+      }
+
+    });
+
+    var Profile = React.createClass({
+
+      render: function() {
+        return (
+          <div className={this.props.attributes.profileClass}>
+            <section className="hero">
+              <div className="container">
+                <div className="profile-info">
+                  <img src="src/img/bojack.jpg" alt="" />
+                  <h1 className="name">Bojack Horseman</h1>
+                  <h3 className="title">Star of the 80's sitcom "Horsin' Around"</h3>
+                  <h3 className="website"><a href="http://www.bojackhorseman.com/" target="_blank">bojackhorseman.com</a></h3>
+                </div>
+                <nav className="sub-nav">
+                  <ul>
+                    <li><a href="#" className="active">Bojack's Feed</a></li>
+                    <li><a href="#">12 Followers</a></li>
+                    <li><a href="#">1349 Following</a></li>
+                  </ul>
+                  <ul className="view-icons">
+                    <li><a href="#" className={this.props.view.tileViewClass} onClick={this.props.clickFN.bind(null, 'tile')}></a></li>
+                    <li><a href="#" className={this.props.view.listViewClass} onClick={this.props.clickFN.bind(null, 'list')}></a></li>
+                  </ul>
+                </nav>
+              </div>
+            </section>
+            <section className={this.props.view.postsViewClass}>
+              <div className="container">
+                <Posts posts={this.props.posts} />
+                <div className="post">
+                  <div className="user-img">
+                    <img src="src/img/bojack.jpg" alt="" />
+                  </div>
+                  <div className="user-post">
+                    <div className="user-name">Bojack Horseman</div>
+                    <div className="post-info">312 days ago</div>
+                    <div className="message">
+                      Welcome to SimplySocial. The NEW Twitter backed by a Horse.
+                    </div>
+                    <div className="extra">Expand<div className="arrow"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        );
+      }
+
+    });
+
+    var postsVar = [
+      {author: "Bojack Horseman", text: "Why is no one following me? I'm awesome.", time: "1 hr ago", imgSrc: "src/img/bojack.jpg"},
+      {author: "Bojack Horseman", text: "Fool me once, shame on you, but teach a man to fool me and I will be fooled for the rest of my life.", time: "2 days ago", imgSrc: "src/img/bojack.jpg"}
+    ];
+
+
+    var Settings = React.createClass({
+
+      render: function() {
+        return (
+          <div className={this.props.attributes.settingsClass}>
+            <div className="container">
+              <h1>Settings</h1>
+              <section className="account">
+                <h3>Account</h3>
+                <div className="profile-img">
+                  <img src="src/img/bojack.jpg" />
+                  <button>change</button>
+                </div>
+                <div className="profile-form">
+                  <input type="text" placeholder="name" />
+                  <input type="email" placeholder="email" />
+                  <input type="password" placeholder="password" />
+                  <input type="password" placeholder="password" />
+                </div>
+              </section>
+              <section className="notifications">
+                <h3>Notifications</h3>
+                <div className="switch-option container">
+                  <label className="label-switch">
+                    <input type="checkbox" id="checkbox1" defaultChecked />
+                    <div className="checkbox"></div>
+                  </label>
+                  <label htmlFor="checkbox1">email me when my posts are marked as favorites</label>
+                </div>
+                <div className="switch-option container">
+                  <label className="label-switch">
+                    <input type="checkbox" id="checkbox2" defaultChecked />
+                    <div className="checkbox"></div>
+                  </label>
+                  <label htmlFor="checkbox2">email me when I'm mentioned</label>
+                </div>
+                <div className="switch-option container">
+                  <label className="label-switch">
+                    <input type="checkbox" id="checkbox3" defaultChecked />
+                    <div className="checkbox"></div>
+                  </label>
+                  <label htmlFor="checkbox3">email me when I get a reply</label>
+                </div>
+                <div className="switch-option container">
+                  <label className="label-switch">
+                    <input type="checkbox" id="checkbox4" />
+                    <div className="checkbox"></div>
+                  </label>
+                  <label htmlFor="checkbox4">email me when someone follows me</label>
+                </div>
+              </section>
+              <section className="privacy">
+                <h3>Privacy</h3>
+                <div className="radio-option container">
+                  <input id="radio-option-1" type="radio" name="radio-option-1" value="radio-option-1" defaultChecked />
+                    <label htmlFor="radio-option-1">allow anyone to tag me</label>
+                </div>
+                <div className="radio-option container">
+                  <input id="radio-option-2" type="radio" name="radio-option-1" value="radio-option-2" />
+                    <label htmlFor="radio-option-2">only allow people I follow to tag me</label>
+                </div>
+                <div className="radio-option container">
+                  <input id="radio-option-3" type="radio" name="radio-option-1" value="radio-option-3" />
+                    <label htmlFor="radio-option-3">don't allow anyone to tag me</label>
+                </div>
+                <div className="checkbox-option container">
+                  <input id="checkbox-1" type="checkbox" />
+                    <label htmlFor="checkbox-1">add a location to my posts</label>
+                </div>
+                <div className="checkbox-option container">
+                  <input id="checkbox-2" type="checkbox" />
+                    <label htmlFor="checkbox-2">let others find me by email</label>
+                </div>
+                <div className="checkbox-option container">
+                  <input id="checkbox-3" type="checkbox" />
+                    <label htmlFor="checkbox-3">tailor ads based on my information</label>
+                </div>
+              </section>
+              <section className="save">
+                <button className="save">Save Changes</button>
+              </section>
+            </div>
+        </div>
+        );
+      }
+
+    });
+
+    var SIMPLYSOCIAL = React.createClass({
+
+      getInitialState: function() {
+        return {
+
+          headerDropdown: {
+            //Header Dropdown Menu
+            dropdownClass: 'dropdown js--hide',
+            dropdownBackdropClass: 'backdrop js--hide',
+          },
+          headerModal: {
+            //New Message Modal
+            modalClass: 'message-modal js--hide',
+            messageboxClass: 'messagebox',
+            modalBackdropClass: 'dimthelights js--hide',
+          },
+          //Newsfeed Page
+          newsfeedAttributes: {
+            newsfeedClass: 'page newsfeed js--show fadeIn',
+          },
+          //Profile Page
+          profileAttributes: {
+            profileClass: 'page profile js--hide',
+          },
+          //Settings Page
+          settingsAttributes: {
+            settingsClass: 'page settings js--hide',
+          },
+          //Views
+          viewAttributes: {
+            tileViewClass: 'tile-view',
+            listViewClass: 'list-view active',
+            postsViewClass: 'posts',
+          }
+
+        }
+      },
+
+      updateClass: function(wasClicked) {
+
+        function hasClass(currentClass, compareClass) {
+          return currentClass.indexOf(compareClass) >= 0;
+        }
+
+        if(wasClicked === 'dropdown'){
+          if(hasClass(this.state.headerDropdown.dropdownClass, 'js--hide')){
+            this.setState({
+              headerDropdown: {
+                dropdownClass: 'dropdown js--show fadeIn',
+                dropdownBackdropClass: 'backdrop js--show',
+              },
+            });
+          }
+          else if(hasClass(this.state.headerDropdown.dropdownClass, 'js--show')){
+            this.setState({
+              headerDropdown: {
+                dropdownClass: 'dropdown js--hide',
+                dropdownBackdropClass: 'backdrop js--hide',
+              },
+            });
+          }
+        }
+
+        if(wasClicked === 'message-modal'){
+          if(hasClass(this.state.headerModal.modalClass, 'js--hide')){
+            this.setState({
+              headerModal: {
+                modalClass: 'message-modal js--show',
+                messageboxClass: 'messagebox fadeIn',
+                modalBackdropClass: 'dimthelights js--show',
+              },
+            });
+          }
+          else if(hasClass(this.state.headerModal.modalClass, 'js--show')){
+            this.setState({
+              headerModal: {
+                modalClass: 'message-modal js--hide',
+                messageboxClass: 'messagebox',
+                modalBackdropClass: 'dimthelights js--hide',
+              },
+            });
+          }
+        }
+
+        if(wasClicked === 'newsfeed'){
+          if(hasClass(this.state.newsfeedAttributes.newsfeedClass, 'js--hide')){
+            this.setState({
+              newsfeedAttributes: {
+                newsfeedClass: 'page newsfeed js--show fadeIn',
+              },
+              profileAttributes: {
+                profileClass: 'page profile js--hide',
+              },
+              settingsAttributes: {
+                settingsClass: 'page settings js--hide',
+              },
+            });
+          }
+        }
+
+        if(wasClicked === 'profile'){
+          this.setState({
+            headerDropdown: {
+              dropdownClass: 'dropdown js--hide',
+              dropdownBackdropClass: 'backdrop js--hide',
+            },
+          });
+          if(hasClass(this.state.profileAttributes.profileClass, 'js--hide')){
+            this.setState({
+              profileAttributes: {
+                profileClass: 'page profile js--show fadeIn',
+              },
+              newsfeedAttributes: {
+                newsfeedClass: 'page newsfeed js--hide',
+              },
+              settingsAttributes: {
+                settingsClass: 'page settings js--hide',
+              },
+            });
+          }
+        }
+
+        if(wasClicked === 'settings'){
+          this.setState({
+            headerDropdown: {
+              dropdownClass: 'dropdown js--hide',
+              dropdownBackdropClass: 'backdrop js--hide',
+            },
+          });
+          if(hasClass(this.state.settingsAttributes.settingsClass, 'js--hide')){
+            this.setState({
+              settingsAttributes: {
+                settingsClass: 'page settings js--show fadeIn',
+              },
+              profileAttributes: {
+                profileClass: 'page profile js--hide',
+              },
+              newsfeedAttributes: {
+                newsfeedClass: 'page newsfeed js--hide',
+              },
+            });
+          }
+        }
+
+        if(wasClicked === 'tile'){
+          this.setState({
+            viewAttributes: {
+              tileViewClass: 'tile-view active',
+              listViewClass: 'list-view',
+              postsViewClass: 'posts tile-view-active',
+            },
+          });
+        }
+
+        if(wasClicked === 'list'){
+          this.setState({
+            viewAttributes: {
+              tileViewClass: 'tile-view',
+              listViewClass: 'list-view active',
+              postsViewClass: 'posts',
+            },
+          });
+        }
+
+      },
+
+      render: function() {
+        return (
+          <div>
+            <Header modal={this.state.headerModal} dropdown={this.state.headerDropdown} clickFN={this.updateClass} />
+            <Newsfeed attributes={this.state.newsfeedAttributes} view={this.state.viewAttributes} posts={this.props.posts} clickFN={this.updateClass} />
+            <Profile attributes={this.state.profileAttributes} view={this.state.viewAttributes} posts={this.props.posts} clickFN={this.updateClass} />
+            <Settings attributes={this.state.settingsAttributes} />
+            <Footer />
+          </div>
+        );
+      }
+
+    });
+
+    React.render(<SIMPLYSOCIAL posts={postsVar} />, document.querySelector('.SimplySocial'));
+
+    </script>
+  </body>
+</html>

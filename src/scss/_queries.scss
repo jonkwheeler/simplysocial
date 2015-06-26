@@ -1,0 +1,141 @@
+/* Big tablet to 1200px: (widths smaller than the 1140px row) */
+@media screen and (max-width: 1200px) {
+
+
+}
+
+/* Small tablet to big tablet: from 768 to 1023px */
+@media screen and (max-width: 1023px) {
+
+  section.hero .postbox, header nav.header-nav .messagebox, section.hero nav.sub-nav, section.posts .post, .settings section, .settings h1 {
+    @include span-columns(8);
+    @include shift(2 of 12);
+  }
+
+  section.posts.tile-view-active {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+
+}
+
+
+/* Small phones to small tablets: from 481 to 767px */
+@media screen and (max-width: 767px) {
+
+
+  header .home {
+    margin-right: 23px;
+    margin-top: 0;
+    height: 30px;
+    width:30px;
+    .logo {
+      display: none;
+    }
+
+    .home-button {
+      display: block;
+    }
+  }
+
+  header nav.header-nav {
+    float: none;
+    margin-top: 0;
+    width: 100%;
+  }
+
+  header nav.header-nav .messagebox, section.hero .postbox, section.hero nav.sub-nav, section.posts .post, .settings section, .settings h1 {
+    @include span-columns(10);
+    @include shift(1 of 12);
+  }
+
+  section.hero nav.sub-nav li  {
+    display: block;
+    padding: 8px;
+    margin-left: 0;
+    a:link,
+    a:visited {
+      border-bottom: none;
+    }
+    a:hover,
+    a:active,
+    a.active {
+      color: white;
+      border-bottom: none;
+    }
+  }
+
+  footer nav.footer-nav li{
+    display: block;
+    padding: 15px;
+    margin-left: 0;
+  }
+
+  section.posts.tile-view-active {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+
+    .post {margin-bottom: 50px;}
+
+  }
+
+
+}
+
+/* Small phones: from 0 to 480px */
+@media screen and (max-width: 480px) {
+
+  header nav.header-nav .messagebox, section.hero .postbox, section.hero nav.sub-nav, section.posts .post, .settings section, .settings h1 {
+    @include outer-container;
+    @include span-columns(12);
+  }
+  section.hero, section.posts, .settings section, .settings h1 {
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  header nav.header-nav .modal-close {
+    right: 10px;
+    top: -40px;
+  }
+  section.hero nav.sub-nav li, header nav.header-nav .search, header nav.header-nav .arrow {
+    margin-left: 5px;
+  }
+
+  header .home,
+  header nav.header-nav .new-message {
+    margin-right: 10px;
+  }
+
+  header nav.header-nav .avatar {
+    margin-left: 10px;
+  }
+
+  section.hero .postbox input.message {
+    font-size: 120%;
+  }
+
+  section.hero .postbox button {
+    &.add-photo, &.add-video {
+      display: block;
+      margin: 10px auto 25px auto;
+    }
+  }
+  section.hero .postbox{padding-bottom: 0;}
+
+  .settings {
+    section.account {
+      .profile-form {
+        margin-top: 15px;
+        width: 100%;
+      }
+    }
+  }
+  .settings section .switch-option label:not(:first-child) {
+    width: 100%;
+    margin-top: 5px;
+    padding-left: 0;
+  }
+
+}
