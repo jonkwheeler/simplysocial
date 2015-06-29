@@ -150,6 +150,7 @@ header {
   background-color: #262728;
   position: fixed;
   top: 0;
+  z-index: 950;
 }
 header .container {
   max-width: 1350px;
@@ -174,13 +175,13 @@ header .home {
 header .home:last-child {
   margin-right: 0;
 }
-header .home img {
-  width: 138px;
-  height: auto;
-}
 header .home .home-button {
   height: 30px;
   width: auto;
+  display: none;
+}
+header .home svg.svg-home {
+  fill: #00cc99;
   display: none;
 }
 header nav.header-nav {
@@ -215,6 +216,7 @@ header nav.header-nav .avatar span {
   position: absolute;
 }
 header nav.header-nav .search {
+  position: relative;
   overflow: hidden;
 }
 header nav.header-nav .search input {
@@ -226,7 +228,12 @@ header nav.header-nav .search input {
   padding: 0 30px 0 6px;
   color: white;
   font-size: 70%;
-  background: url("../img/search.svg") right 8px center no-repeat;
+}
+header nav.header-nav .search svg.svg-search {
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  fill: #44474b;
 }
 header nav.header-nav .new-message {
   float: left;
@@ -234,10 +241,10 @@ header nav.header-nav .new-message {
 }
 header nav.header-nav .new-message span {
   cursor: pointer;
-  background: url("../img/new-message.svg") center no-repeat;
   display: block;
-  width: 35px;
-  height: 30px;
+}
+header nav.header-nav .new-message svg.svg-new-message {
+  fill: #00cc99;
 }
 header nav.header-nav .messagebox {
   float: left;
@@ -248,7 +255,6 @@ header nav.header-nav .messagebox {
   position: fixed;
   top: 33%;
   left: 0;
-  background-color: rgba(0, 178, 134, 0.7);
   border-radius: 4px;
   padding: 20px;
   background-color: #dde0e5;
@@ -283,13 +289,13 @@ header nav.header-nav .messagebox button {
 header nav.header-nav .messagebox button.add-photo {
   margin-left: 0;
 }
-header nav.header-nav .messagebox button.add-photo::before {
-  content: url(../img/add-photo.svg);
-  margin-right: 10px;
+header nav.header-nav .messagebox button span {
+  float: left;
 }
-header nav.header-nav .messagebox button.add-video::before {
-  content: url(../img/add-video.svg);
-  margin-right: 10px;
+header nav.header-nav .messagebox button.add-photo svg.svg-add-photo, header nav.header-nav .messagebox button.add-video svg.svg-add-video {
+  float: left;
+  margin: 3px 8px;
+  fill: #a5a8ad;
 }
 header nav.header-nav .messagebox button.submit {
   background-color: #00b286;
@@ -304,12 +310,15 @@ header nav.header-nav .messagebox button.submit {
 header nav.header-nav .modal-close {
   width: 30px;
   height: 30px;
-  background: url("../img/modal-close.svg") center no-repeat;
   position: absolute;
   right: -30px;
   top: -30px;
   z-index: 900;
   cursor: pointer;
+}
+header nav.header-nav .modal-close svg.svg-modal-close {
+  margin: 5px;
+  fill: #697074;
 }
 header nav.header-nav .dropdown {
   position: absolute;
@@ -356,8 +365,8 @@ header nav.header-nav .dropdown:after {
 .....................................
 */
 section.hero {
-  background-image: -webkit-linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/free-tropical-beach-wallpaper-min-blur.jpg");
-  background-image: linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/free-tropical-beach-wallpaper-min-blur.jpg");
+  background-image: url("../img/hero-min.jpg");
+  background-image: url("../img/hero-min.jpg");
   background-size: cover;
   background-position: center;
 }
@@ -369,8 +378,8 @@ section.hero .postbox {
   margin-left: 25.62814%;
   background-color: rgba(0, 178, 134, 0.7);
   border-radius: 4px;
-  padding: 40px;
-  margin-top: 120px;
+  padding: 35px 35px 15px 35px;
+  margin-top: 125px;
   margin-bottom: 90px;
 }
 section.hero .postbox:last-child {
@@ -385,10 +394,13 @@ section.hero .postbox input.message {
   font-weight: 300;
   border: none;
 }
+section.hero .postbox input.message::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
 section.hero .postbox button {
   background: none;
   border: none;
-  color: white;
+  color: rgba(255, 255, 255, 0.7);
   font-size: 70%;
   font-weight: 300;
   margin: 10px;
@@ -396,13 +408,10 @@ section.hero .postbox button {
 section.hero .postbox button.add-photo {
   margin-left: 0;
 }
-section.hero .postbox button.add-photo::before {
-  content: url(../img/add-photo.svg);
-  margin-right: 10px;
-}
-section.hero .postbox button.add-video::before {
-  content: url(../img/add-video.svg);
-  margin-right: 10px;
+section.hero .postbox button.add-photo svg.svg-add-photo, section.hero .postbox button.add-video svg.svg-add-video {
+  float: left;
+  margin: 3px 8px;
+  fill: rgba(255, 255, 255, 0.7);
 }
 section.hero nav.sub-nav {
   float: left;
@@ -448,18 +457,32 @@ section.hero nav.sub-nav li a.active {
 section.hero nav.sub-nav ul.view-icons {
   width: 15%;
   float: right;
+  margin-right: -7px;
 }
 section.hero nav.sub-nav ul.view-icons li {
   margin-left: 0px;
   float: right;
 }
-section.hero nav.sub-nav ul.view-icons li a.list-view {
-  background: url("../img/list-view.svg") center no-repeat;
-  background-size: 10px 9px;
+section.hero nav.sub-nav ul.view-icons li a:link,
+section.hero nav.sub-nav ul.view-icons li a:visited svg {
+  fill: #bec3cc;
+  transition: none;
+  padding: 15px 7px;
 }
-section.hero nav.sub-nav ul.view-icons li a.tile-view {
-  background: url("../img/tile-view.svg") center no-repeat;
-  background-size: 10px 9px;
+section.hero nav.sub-nav ul.view-icons li a:hover,
+section.hero nav.sub-nav ul.view-icons li a:active,
+section.hero nav.sub-nav ul.view-icons li a.active {
+  border-bottom: none;
+}
+section.hero nav.sub-nav ul.view-icons li a:hover svg,
+section.hero nav.sub-nav ul.view-icons li a:active svg,
+section.hero nav.sub-nav ul.view-icons li a.active svg {
+  fill: white;
+}
+
+.page.profile section.hero nav.sub-nav ul {
+  text-align: center;
+  width: 100%;
 }
 
 /* ..................................
@@ -478,7 +501,7 @@ section.posts .post {
   border: solid 1px #dee1e5;
   border-radius: 4px;
   padding: 25px;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 section.posts .post:last-child {
   margin-right: 0;
@@ -538,7 +561,7 @@ section.posts .post .user-post .extra span, section.posts .post .user-post .extr
 }
 section.posts hr {
   display: block;
-  height: 50px;
+  height: 25px;
   width: 100%;
   margin: 0;
   border: 0;
@@ -611,8 +634,8 @@ footer nav.footer-nav li a:active {
 .....................................
 */
 .profile section.hero {
-  background-image: -webkit-linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/bojacks-house-blur-min.jpg");
-  background-image: linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/bojacks-house-blur-min.jpg");
+  background-image: -webkit-linear-gradient(rgba(2, 143, 197, 0.6), rgba(61, 89, 103, 0.6)), url("../img/bojacks-house-blur-min.jpg");
+  background-image: linear-gradient(rgba(2, 143, 197, 0.6), rgba(61, 89, 103, 0.6)), url("../img/bojacks-house-blur-min.jpg");
 }
 .profile section.hero .profile-info {
   float: left;
@@ -621,7 +644,7 @@ footer nav.footer-nav li a:active {
   width: 48.74372%;
   margin-left: 25.62814%;
   margin-top: 85px;
-  margin-bottom: 85px;
+  margin-bottom: 50px;
 }
 .profile section.hero .profile-info:last-child {
   margin-right: 0;
@@ -723,6 +746,16 @@ footer nav.footer-nav li a:active {
   display: block;
   width: 70%;
 }
+.settings section.account .profile-form span {
+  position: relative;
+  display: block;
+}
+.settings section.account .profile-form svg {
+  position: absolute;
+  left: 9px;
+  top: 13px;
+  fill: #bec3cc;
+}
 .settings section.account .profile-form input {
   width: 80%;
   height: 40px;
@@ -740,14 +773,8 @@ footer nav.footer-nav li a:active {
   border-color: #00b286;
   transition: all 0.3s ease;
 }
-.settings section.account .profile-form input[type="text"] {
-  background-image: url("../img/user-icon.svg");
-}
-.settings section.account .profile-form input[type="email"] {
-  background-image: url("../img/mail-icon.svg");
-}
-.settings section.account .profile-form input[type="password"] {
-  background-image: url("../img/lock-icon.svg");
+.settings section.account .profile-form span:focus svg {
+  fill: #00b286;
 }
 .settings section.privacy label {
   display: inline-block;
@@ -922,10 +949,10 @@ footer nav.footer-nav li a:active {
     height: 30px;
     width: 30px;
   }
-  header .home .logo {
+  header .home svg.svg-simplysocial-logo {
     display: none;
   }
-  header .home .home-button {
+  header .home svg.svg-home {
     display: block;
   }
 
@@ -972,9 +999,6 @@ footer nav.footer-nav li a:active {
     -moz-column-count: 1;
     -webkit-column-count: 1;
     column-count: 1;
-  }
-  section.posts.tile-view-active .post {
-    margin-bottom: 50px;
   }
 }
 /* Small phones: from 0 to 480px */

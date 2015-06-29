@@ -30,11 +30,11 @@
     margin-top: 0;
     height: 30px;
     width:30px;
-    .logo {
+    svg.svg-simplysocial-logo {
       display: none;
     }
 
-    .home-button {
+    svg.svg-home {
       display: block;
     }
   }
@@ -77,7 +77,6 @@
     -webkit-column-count: 1;
     column-count: 1;
 
-    .post {margin-bottom: 50px;}
 
   }
 

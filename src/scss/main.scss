@@ -87,6 +87,7 @@ header {
   background-color: $grngry4;
   position: fixed;
   top: 0;
+  z-index: 950;
   .container {
     max-width: $max-expanded-width;
     height: 60px;
@@ -105,13 +106,16 @@ header {
     @include span-columns(3);
     margin-top: 4px;
     cursor: pointer;
-    img {
-      width: 138px;
-      height: auto;
-    }
     .home-button{
       height: 30px;
       width:auto;
+      display: none;
+    }
+    svg.svg-simplysocial-logo {
+
+    }
+    svg.svg-home {
+      fill: $grn2;
       display: none;
     }
   }
@@ -149,6 +153,7 @@ header {
     }
 
     .search {
+      position: relative;
       overflow:hidden;
       input {
         height: 30px;
@@ -159,19 +164,23 @@ header {
         padding: 0 30px 0 6px;
         color: white;
         font-size: 70%;
-        background: url("../img/search.svg") right 8px center no-repeat;
+      }
+      svg.svg-search {
+        position: absolute;
+        right: 9px;
+        top: 8px;
+        fill: rgb(68, 71, 75);
       }
     }
 
     .new-message {
       float: left;
       margin-right: 23px;
-      span {
-        cursor: pointer;
-        background: url("../img/new-message.svg") center no-repeat;
-        display: block;
-        width: 35px;
-        height: 30px;}
+        span {
+          cursor: pointer;
+          display: block;
+        }
+        svg.svg-new-message { fill: $grn2; }
       }
 
     .messagebox  {
@@ -180,7 +189,6 @@ header {
       position:fixed;
       top: 33%;
       left:0;
-      background-color: rgba(0, 178, 134, 0.7);
       border-radius: 4px;
       padding: 20px;
       background-color: rgb(221, 224, 229);
@@ -211,9 +219,15 @@ header {
         font-weight: $light;
         margin: 10px;
         &.add-photo { margin-left: 0; }
+
+        span { float: left; }
       }
-      button.add-photo::before { content: url(../img/add-photo.svg); margin-right: 10px; }
-      button.add-video::before { content: url(../img/add-video.svg); margin-right: 10px; }
+
+      button.add-photo svg.svg-add-photo, button.add-video svg.svg-add-video {
+        float: left;
+        margin: 3px 8px;
+        fill: #a5a8ad;
+      }
 
       button.submit {
         background-color: $grn3;
@@ -231,12 +245,15 @@ header {
     .modal-close {
       width: 30px;
       height: 30px;
-      background: url('../img/modal-close.svg') center no-repeat;
       position: absolute;
       right: -30px;
       top: -30px;
       z-index: 900;
       cursor: pointer;
+      svg.svg-modal-close {
+        margin: 5px;
+        fill: $grngry2;
+      }
     }
 
     .dropdown {
@@ -291,7 +308,7 @@ header {
 */
 
 section.hero {
-  @include background-image(linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/free-tropical-beach-wallpaper-min-blur.jpg"));
+  @include background-image(url("../img/hero-min.jpg"));
   background-size: cover;
   background-position: center;
 
@@ -300,8 +317,8 @@ section.hero {
     @include shift(3 of 12);
     background-color: rgba(0, 178, 134, 0.7);
     border-radius: 4px;
-    padding: 40px;
-    margin-top: 120px;
+    padding: 35px 35px 15px 35px;
+    margin-top: 125px;
     margin-bottom: 90px;
 
     input.message {
@@ -312,19 +329,25 @@ section.hero {
       font-size: $largeFS;
       font-weight: $light;
       border: none;
+      &::-webkit-input-placeholder {
+        color: rgba(255, 255, 255, 0.7);
+      }
     }
 
     button {
       background: none;
       border: none;
-      color: white;
+      color: rgba(255, 255, 255, 0.7);
       font-size: 70%;
       font-weight: $light;
       margin: 10px;
       &.add-photo { margin-left: 0; }
     }
-    button.add-photo::before { content: url(../img/add-photo.svg); margin-right: 10px; }
-    button.add-video::before { content: url(../img/add-video.svg); margin-right: 10px; }
+    button.add-photo svg.svg-add-photo, button.add-video svg.svg-add-video {
+      float: left;
+      margin: 3px 8px;
+      fill: rgba(255, 255, 255, 0.7);
+    }
   }
 
   nav.sub-nav {
@@ -367,21 +390,30 @@ section.hero {
     ul.view-icons {
       width: 15%;
       float: right;
+      margin-right: -7px;
       li {
         margin-left: 0px;
         float: right;
-        a.list-view {
-          background: url("../img/list-view.svg") center no-repeat;
-          background-size: 10px 9px;
+        a:link,
+        a:visited svg{
+          fill: #bec3cc;
+          transition: none;
+          padding: 15px 7px;
         }
-        a.tile-view {
-          background: url("../img/tile-view.svg") center no-repeat;
-          background-size: 10px 9px;
+        a:hover,
+        a:active,
+        a.active {
+          svg {fill: white;}
+          border-bottom: none;
         }
       }
     }
   }
 
+}
+.page.profile section.hero nav.sub-nav ul {
+  text-align: center;
+    width: 100%;
 }
 
 
@@ -399,7 +431,7 @@ section.posts {
     border: solid 1px $blugry2;
     border-radius: 4px;
     padding: 25px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     &:last-child {margin-bottom: 0;}
 
 
@@ -452,7 +484,7 @@ section.posts {
 
   hr {
     display: block;
-    height: 50px;
+    height: 25px;
     width: 100%;
     margin: 0;
     border: 0;
@@ -532,13 +564,13 @@ footer {
 .profile {
 
   section.hero {
-    @include background-image(linear-gradient(rgba(21, 68, 208, 0.55), rgba(2, 163, 120, 0.63)), url("../img/bojacks-house-blur-min.jpg"));
+    @include background-image(linear-gradient(rgba(2, 143, 197, 0.6), rgba(61, 89, 103, 0.6)), url("../img/bojacks-house-blur-min.jpg"));
 
     .profile-info {
       @include span-columns(6);
       @include shift(3 of 12);
       margin-top: 85px;
-      margin-bottom: 85px;
+      margin-bottom: 50px;
 
       * {
         display: block;
@@ -651,6 +683,14 @@ footer {
           display: block;
           width: 70%;
 
+          span {position: relative;display: block;}
+          svg {
+            position: absolute;
+            left: 9px;
+            top: 13px;
+            fill: $blugry3;
+          }
+
           input {
             width:80%;
             height: 40px;
@@ -668,16 +708,11 @@ footer {
             border-color: $grn3;
             transition: all 0.3s ease;
           }
+          span:focus {
+            svg {fill:$grn3;}
+          }
 
-          input[type="text"]{
-            background-image: url("../img/user-icon.svg");
-          }
-          input[type="email"]{
-            background-image: url("../img/mail-icon.svg");
-          }
-          input[type="password"]{
-            background-image: url("../img/lock-icon.svg");
-          }
+
 
         }
 
