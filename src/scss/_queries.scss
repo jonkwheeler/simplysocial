@@ -50,6 +50,13 @@
     @include shift(1 of 12);
   }
 
+  section.hero nav.sub-nav ul {
+    width: 100%;
+    text-align: center;
+
+    &.view-icons {display: none;}
+  }
+
   section.hero nav.sub-nav li  {
     display: block;
     padding: 8px;
