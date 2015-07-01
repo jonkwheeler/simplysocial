@@ -801,11 +801,13 @@ footer nav.footer-nav li a:active {
   border: 1px solid #bec3cc;
 }
 .settings section.privacy input[type=radio]:checked + label:before, .settings section.privacy input[type=checkbox]:checked + label:before {
-  content: "\25CF";
-  color: #00b286;
-  font-size: 32px;
-  text-align: center;
-  line-height: 15px;
+  height: 23px;
+  width: 23px;
+  background: #00b286;
+  border-radius: 23px;
+  content: "";
+  z-index: 1;
+  -webkit-box-shadow: inset 0px 0px 0px 3px #FFF;
 }
 .settings section.privacy .checkbox-option {
   padding: 7px 0;
